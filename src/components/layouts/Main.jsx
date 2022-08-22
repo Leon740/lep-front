@@ -31,25 +31,20 @@ function Main(props) {
   // Data
   const query = graphql`
     query {
-      allStrapiSeo {
+      allStrapiMeta {
         nodes {
           lang
           title
           description
           keywords
           url
-          image {
-            localFile {
-              url
-            }
-          }
         }
       }
     }
   `;
-  const DATA = useStaticQuery(query).allStrapiSeo.nodes[0];
+  const DATA = useStaticQuery(query).allStrapiMeta.nodes[0];
   const {
-    lang, title, description, keywords, url, image: { localFile: { url: image } },
+    lang, title, description, keywords, url,
   } = DATA;
 
   return (
@@ -66,7 +61,7 @@ function Main(props) {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={url} />
-          <meta property="og:image" content={image} />
+          {/* <meta property="og:image" content={image} /> */}
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content={title} />
         </Helmet>

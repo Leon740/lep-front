@@ -20,7 +20,7 @@ module.exports = {
           "index-project",
         ],
         singleTypes: [
-          "seo",
+          "meta",
           "element-primary-menu",
           "element-contacts-menu",
           "page-not-found",
