@@ -1,0 +1,76 @@
+[class^="ic-"],
+[class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "#{$font-icons}" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-minus {
+  &:before {
+    content: $ic-minus;
+  }
+}
+.ic-arrow-down {
+  &:before {
+    content: $ic-arrow-down;
+  }
+}
+.ic-arrow-left {
+  &:before {
+    content: $ic-arrow-left;
+  }
+}
+.ic-arrow-right {
+  &:before {
+    content: $ic-arrow-right;
+  }
+}
+.ic-arrow-top {
+  &:before {
+    content: $ic-arrow-top;
+  }
+}
+.ic-camera {
+  &:before {
+    content: $ic-camera;
+  }
+}
+.ic-close {
+  &:before {
+    content: $ic-close;
+  }
+}
+.ic-menu {
+  &:before {
+    content: $ic-menu;
+  }
+}
+.ic-search {
+  &:before {
+    content: $ic-search;
+  }
+}
+.ic-social-gmail {
+  &:before {
+    content: $ic-social-gmail;
+  }
+}
+.ic-social-insta {
+  &:before {
+    content: $ic-social-insta;
+  }
+}
+.ic-social-phone {
+  &:before {
+    content: $ic-social-phone;
+  }
+}

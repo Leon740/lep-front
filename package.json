@@ -1,0 +1,50 @@
+{
+  "name": "lep_gatsby",
+  "version": "1.0.0",
+  "private": true,
+  "description": "lep_gatsby",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "gatsby": "^4.18.0",
+    "gatsby-plugin-anchor-links": "^1.2.1",
+    "gatsby-plugin-image": "^2.20.0",
+    "gatsby-plugin-manifest": "^4.18.1",
+    "gatsby-plugin-offline": "^5.21.0",
+    "gatsby-plugin-react-helmet-async": "^1.2.3",
+    "gatsby-plugin-sass": "^5.18.1",
+    "gatsby-plugin-sharp": "^4.20.0",
+    "gatsby-plugin-sitemap": "^5.18.1",
+    "gatsby-react-router-scroll": "^5.21.0",
+    "gatsby-source-filesystem": "^4.20.0",
+    "gatsby-source-strapi": "^2.0.0",
+    "gatsby-transformer-remark": "^5.20.0",
+    "gatsby-transformer-sharp": "^4.20.0",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^18.1.0",
+    "react-helmet-async": "^1.3.0",
+    "react-markdown": "^8.0.3",
+    "sass": "^1.53.0",
+    "swiper": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  }
+}

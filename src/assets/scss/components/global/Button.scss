@@ -1,0 +1,58 @@
+.button {
+  display: flex;
+  max-width: max-content;
+
+  .button__inner {
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    @include typography-body();
+    margin: 0 (-(calc($s-8 / 2)));
+
+    .button__icon,
+    .button__label {
+      margin: 0 calc($s-8 / 2);
+    }
+
+    .button__icon {
+      display: flex;
+    }
+  }
+
+  &__primary {
+    padding: $s-8 $s-16;
+    @include shadow();
+
+    &--active {
+      @include shadow($active: true);
+    }
+  }
+
+  &__secondary {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__circle {
+    &:hover .button__icon {
+      &::before {
+        opacity: 0;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    .button__icon {
+      width: $s-32;
+      height: $s-32;
+      border-radius: 50%;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      @include shadow($border-radius: 50%);
+    }
+  }
+}

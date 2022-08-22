@@ -1,0 +1,15 @@
+// Colors
+@function color($group-name, $color-name: "black") {
+  @if (map-has-key($map: $colors, $key: $group-name)) {
+    $active-group: map-get($colors, $group-name);
+
+    @if (map-has-key($map: $active-group, $key: $color-name)) {
+      @return map-get($active-group, $color-name);
+    } @else {
+      @warn "No such color `#{$color-name}` in group `#{$group-name}`";
+    }
+  } @else {
+    @warn "No such group `#{$group-name}` in `colors`";
+  }
+  @return null;
+}

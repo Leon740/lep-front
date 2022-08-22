@@ -1,0 +1,161 @@
+// Media
+@mixin respond-to($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($grid-breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "No such `#{$breakpoint}` in `grid-breakpoints`";
+  }
+}
+
+@mixin respond-to-max($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($grid-breakpoints, $breakpoint) - 1}) {
+      @content;
+    }
+  } @else {
+    @warn "No such `#{$breakpoint}` in `grid-breakpoints`";
+  }
+}
+
+@mixin respond-within($breakpoint-1, $breakpoint-2) {
+  @if map-has-key($grid-breakpoints, $breakpoint-1) and
+    map-has-key($grid-breakpoints, $breakpoint-2)
+  {
+    @media (min-width: #{map-get($grid-breakpoints, $breakpoint-1)}) and (max-width: #{map-get($grid-breakpoints, $breakpoint-2) - 1}) {
+      @content;
+    }
+  } @else {
+    @warn "No such `#{$breakpoint}` in `grid-breakpoints`";
+  }
+}
+
+// Typography
+@mixin font-resize($font-size, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin typography-title() {
+  @include font-resize($s-24, 32px);
+  font-family: $font-os-bold;
+
+  @include respond-to(xl) {
+    @include font-resize($s-32, 44px);
+  }
+}
+
+@mixin typography-heading() {
+  @include font-resize(($s-16 + 2px), 30px);
+  font-family: $font-os-regular;
+
+  @include respond-to(xl) {
+    @include font-resize(($s-16 + 4px), 32px);
+  }
+}
+
+@mixin typography-subheading() {
+  @include font-resize($s-16, 28px);
+  font-family: $font-os-semibold;
+}
+
+@mixin typography-body() {
+  @include font-resize($s-16, 28px);
+  font-family: $font-os-regular;
+}
+
+@mixin list-disc() {
+  list-style-type: disc;
+  padding: 0 0 0 $s-16;
+}
+
+// Shadow
+@mixin shadow(
+  $active: false,
+  $size-small: true,
+  $hover: true,
+  $border-radius: $border-radius
+) {
+  position: relative;
+  z-index: $z-index-p1;
+  background: color(shadow, background);
+  border-radius: $border-radius;
+
+  $size: 3px;
+
+  @if ($size-small == false) {
+    $size: 5px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: $z-index-m1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid color(shadow, border);
+    border-radius: inherit;
+    transition: $transition;
+  }
+
+  &::before {
+    box-shadow: (-$size) (-$size) ($size * 2) color(shadow, light),
+      $size $size ($size * 2) color(shadow, dark);
+  }
+
+  &::after {
+    box-shadow: inset (-$size) (-$size) ($size * 2) color(shadow, light),
+      inset $size $size ($size * 2) color(shadow, dark);
+  }
+
+  @if ($active) {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  } @else {
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  @if ($hover) {
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Positioning
+@mixin position-vertical-center() {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin position-horizontal-center() {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin position-all-center() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,62 @@
+@font-face {
+  font-family: $font-os-regular;
+  src: url("../fonts/#{$font-os-regular}/#{$font-os-regular}.eot");
+  src: url("../fonts/#{$font-os-regular}/#{$font-os-regular}.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/#{$font-os-regular}/#{$font-os-regular}.woff2")
+      format("woff2"),
+    url("../fonts/#{$font-os-regular}/#{$font-os-regular}.woff") format("woff"),
+    url("../fonts/#{$font-os-regular}/#{$font-os-regular}.ttf")
+      format("truetype"),
+    url("../fonts/#{$font-os-regular}/#{$font-os-regular}.svg##{$font-os-regular}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-os-bold;
+  src: url("../fonts/#{$font-os-bold}/#{$font-os-bold}.eot");
+  src: url("../fonts/#{$font-os-bold}/#{$font-os-bold}.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/#{$font-os-bold}/#{$font-os-bold}.woff2") format("woff2"),
+    url("../fonts/#{$font-os-bold}/#{$font-os-bold}.woff") format("woff"),
+    url("../fonts/#{$font-os-bold}/#{$font-os-bold}.ttf") format("truetype"),
+    url("../fonts/#{$font-os-bold}/#{$font-os-bold}.svg##{$font-os-bold}")
+      format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-os-semibold;
+  src: url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.eot");
+  src: url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.woff2")
+      format("woff2"),
+    url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.woff")
+      format("woff"),
+    url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.ttf")
+      format("truetype"),
+    url("../fonts/#{$font-os-semibold}/#{$font-os-semibold}.svg##{$font-os-semibold}")
+      format("svg");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "#{$font-icons}";
+  src: url("../fonts/#{$font-icons}/fonts/#{$font-icons}.ttf?cno06f")
+      format("truetype"),
+    url("../fonts/#{$font-icons}/fonts/#{$font-icons}.woff?cno06f")
+      format("woff"),
+    url("../fonts/#{$font-icons}/fonts/#{$font-icons}.svg?cno06f##{$font-icons}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

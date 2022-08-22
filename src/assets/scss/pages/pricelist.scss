@@ -1,0 +1,184 @@
+.page__pricelist {
+  .pricelist__inner {
+    padding: $s-96 0;
+
+    @include respond-to(xl) {
+      padding: $s-128 0;
+    }
+  }
+
+  .pricelist__title {
+    @include typography-title();
+    text-align: center;
+  }
+
+  .pricelist__search {
+    display: flex;
+    margin: $s-48 0;
+
+    @include respond-to(xl) {
+      margin: $s-64 0;
+    }
+
+    .search__icon {
+      width: $s-48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color(shadow, border);
+      border-right: 0;
+      border-radius: $border-radius 0 0 $border-radius;
+
+      .ic-search {
+        font-size: $s-24;
+      }
+    }
+
+    .search__input {
+      width: calc(100% - $s-48);
+      @include shadow(
+        $active: true,
+        $hover: false,
+        $border-radius: 0 $border-radius $border-radius 0
+      );
+
+      .input__inner {
+        width: 100%;
+        @include typography-body();
+        padding: $s-8 $s-16;
+        border: none;
+        background: color(simple, transparent);
+
+        &::placeholder {
+          color: color(simple, black);
+        }
+      }
+
+      .input__reset {
+        font-size: $s-16;
+        display: flex;
+        position: absolute;
+        @include position-vertical-center();
+        right: $s-16;
+      }
+    }
+  }
+
+  .pricelist__table {
+    // Idea: set container padding to zero
+    overflow: auto;
+    padding: $s-16 $s-32;
+    margin: (-$s-16) (-$s-32);
+    // Top: 0
+    // Bottom: 0
+    // Container: 32
+    // Left & Right: 32
+
+    @include respond-to(sm) {
+      margin: (-$s-16);
+      // Top: 0
+      // Bottom: 0
+      // Container: 16
+      // Left & Right: 32
+    }
+    @include respond-to(lg) {
+      padding: $s-16;
+      // Top: 0
+      // Bottom: 0
+      // Container: 16
+      // Left & Right: 16
+    }
+
+    .table__inner {
+      @include shadow($size-small: false, $hover: false);
+      min-width: 700px;
+
+      @include respond-to(md) {
+        min-width: 100%;
+      }
+    }
+
+    .table__th,
+    .table__td {
+      padding: $s-16;
+      vertical-align: top;
+    }
+
+    .table__th {
+      @include typography-subheading();
+    }
+
+    .table__td {
+      @include typography-body();
+
+      &_name {
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      .td__search {
+        background: color(simple, yellow);
+      }
+    }
+
+    .table__thead {
+      background: rgba(color(simple, table), 0.05);
+
+      .table__th {
+        &:first-of-type {
+          border-top-left-radius: $border-radius;
+        }
+
+        &:last-of-type {
+          border-top-right-radius: $border-radius;
+        }
+      }
+    }
+
+    .table__tbody {
+      .table__tr {
+        &:not(:last-of-type) {
+          border-bottom: 1px solid color(shadow, border);
+        }
+
+        &:nth-of-type(even) {
+          background: rgba(color(simple, table), 0.03);
+        }
+      }
+    }
+  }
+
+  .pricelist__results {
+    .img__default_results {
+      width: $s-128;
+      margin: 0 auto;
+    }
+
+    .results__title,
+    .results__subtitle {
+      margin: $s-32 0 0;
+      @include typography-heading();
+      text-align: center;
+    }
+
+    .results__title {
+      margin: $s-32 0 0;
+    }
+
+    .results__subtitle {
+      margin: $s-24 0 $s-48;
+    }
+
+    .results__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: -($s-16);
+
+      .button__primary {
+        margin: $s-16;
+      }
+    }
+  }
+}

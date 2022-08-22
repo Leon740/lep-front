@@ -1,0 +1,17 @@
+// Bootstrap Compoments Customizations
+
+// Modal Animation
+.modal {
+  &.fade {
+    .modal-dialog {
+      transition: $transition;
+      transform: translate(0, 50px);
+    }
+  }
+
+  &.show {
+    .modal-dialog {
+      transform: none;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-os-regular;
+  font-size: $s-16;
+  line-height: 28px;
+  color: color(simple, black);
+  background: color(shadow, background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a,
+button {
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}

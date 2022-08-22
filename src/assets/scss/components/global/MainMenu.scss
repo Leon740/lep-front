@@ -1,0 +1,115 @@
+.site__header,
+.site__footer {
+  .site__logo {
+    .logo__button {
+      display: inline-block;
+    }
+  }
+
+  .primary__menu,
+  .contacts__menu {
+    [class^="col"] {
+      @include respond-to(xl) {
+        max-width: max-content;
+      }
+    }
+  }
+
+  .primary__menu {
+    .button__secondary {
+      margin: $s-16 0 0;
+
+      @include respond-to(xl) {
+        margin: 0;
+      }
+    }
+  }
+
+  .contacts__menu {
+    .button__circle {
+      margin: $s-16 0 0;
+
+      @include respond-to(md) {
+        margin: $s-16 0 0 auto;
+      }
+      @include respond-to(xl) {
+        margin: $s-32 0 0;
+      }
+    }
+  }
+}
+
+.site__header {
+  padding: $s-8 0;
+  max-height: $s-88;
+  overflow: hidden;
+  transition: $transition;
+
+  &_placeholder {
+    height: $s-88;
+  }
+
+  &_container {
+    @include shadow($size-small: false, $border-radius: 0, $hover: false);
+    position: fixed;
+    width: 100%;
+    z-index: $z-index-p100;
+    top: 0;
+  }
+
+  .site__logo {
+    .logo__img {
+      width: $s-72;
+    }
+  }
+
+  .header__handler {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .primary__menu {
+    @include respond-within(md, xl) {
+      margin-bottom: $s-8;
+    }
+  }
+
+  .contacts__menu {
+    margin-bottom: $s-8;
+  }
+
+  .button__primary {
+    // contacts toggler
+    @include respond-to(xl) {
+      &--default {
+        background: color(simple, transparent);
+        border: 0;
+        padding: 0;
+
+        &::before,
+        &::after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.site__footer {
+  @include shadow($size-small: false, $border-radius: 0, $hover: false);
+  padding: $s-32 0;
+
+  @include respond-to(md) {
+    padding: $s-48 0;
+  }
+  @include respond-to(xl) {
+    padding: $s-64 0;
+  }
+
+  .site__logo {
+    .logo__img {
+      width: $s-96;
+    }
+  }
+}

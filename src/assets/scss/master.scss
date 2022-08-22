@@ -1,0 +1,29 @@
+// Theme
+@import "normalize.css";
+@import "./theme/bootstrap-grid";
+@import "./theme/variables";
+@import "./theme/functions";
+@import "./theme/mixins";
+@import "./theme/basic";
+@import "./theme/fonts";
+@import "./theme/icons";
+@import "./theme/bootstrap-custom";
+
+// Packages
+@import "swiper/css/bundle";
+
+// Global Components
+@import "./components/global/Button";
+@import "./components/global/Img";
+@import "./components/global/MainMenu";
+
+// Layouts
+@import "./components/layouts/Main";
+
+// Pages Components
+@import "./components/pages/index/ListItem";
+
+// Pages
+@import "./pages/index";
+@import "./pages/pricelist";
+@import "./pages/404";

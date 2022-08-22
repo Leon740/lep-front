@@ -1,0 +1,614 @@
+.page__index {
+  @mixin section-padding($type: "default") {
+    padding: $s-32 0;
+
+    @include respond-to(md) {
+      padding: $s-48 0;
+    }
+    @include respond-to(xl) {
+      padding: $s-64 0;
+    }
+
+    @if ($type == "top") {
+      padding-top: $s-64;
+
+      @include respond-to(md) {
+        padding-top: $s-96;
+      }
+      @include respond-to(xl) {
+        padding-top: $s-128;
+      }
+    }
+    @if ($type == "bottom") {
+      padding-bottom: $s-64;
+
+      @include respond-to(md) {
+        padding-bottom: $s-96;
+      }
+      @include respond-to(xl) {
+        padding-bottom: $s-128;
+      }
+    }
+  }
+
+  @mixin section-title() {
+    @include typography-title();
+    margin: 0 0 $s-32 0;
+
+    @include respond-to(md) {
+      margin: 0 0 $s-48 0;
+      text-align: center;
+    }
+    @include respond-to(xl) {
+      margin: 0 0 $s-64 0;
+    }
+  }
+
+  .index__hero {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    height: 400px;
+
+    @include respond-to(md) {
+      height: 500px;
+    }
+    @include respond-to(xl) {
+      height: 700px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: $z-index-m1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(color(simple, black), 0.3);
+    }
+
+    .hero__paragraph {
+      color: color(simple, white);
+      @include typography-heading();
+    }
+
+    .hero__title {
+      margin: $s-32 0;
+      color: color(simple, white);
+      text-transform: uppercase;
+      @include typography-title();
+      letter-spacing: 2px;
+
+      @include respond-to(xl) {
+        letter-spacing: 3px;
+      }
+    }
+
+    .button__primary {
+      margin: 0 auto;
+    }
+  }
+
+  .index__about {
+    @include section-padding($type: "top");
+
+    .about__title {
+      @include section-title();
+    }
+
+    .about__locations {
+      display: flex;
+      margin: $s-32 0;
+
+      .locations__item {
+        display: flex;
+        align-items: center;
+
+        & + .locations__item {
+          margin-left: $s-32;
+        }
+
+        .img__default_locations {
+          width: $s-16;
+          margin-right: $s-8;
+        }
+      }
+    }
+
+    .about__list {
+      @include typography-body();
+
+      @include respond-to-max(md) {
+        margin-bottom: $s-32;
+      }
+
+      ul {
+        @include list-disc();
+      }
+    }
+  }
+
+  .index__services {
+    @include section-padding();
+
+    .services__title {
+      @include section-title();
+    }
+
+    .services__list {
+      margin-top: (-$s-32);
+
+      @include respond-to(xl) {
+        margin-top: (-$s-48);
+      }
+    }
+
+    .list__item_services {
+      margin-top: $s-32;
+
+      @include respond-to(xl) {
+        margin-top: $s-48;
+      }
+    }
+  }
+
+  .index__reviews {
+    @include section-padding();
+
+    .reviews__title {
+      @include section-title();
+    }
+
+    .reviews__stars {
+      display: flex;
+
+      .img__default_star {
+        width: 20px;
+
+        & + .img__default_star {
+          margin-left: 3px;
+        }
+      }
+    }
+
+    .reviews__place {
+      display: flex;
+      align-items: start;
+
+      .img__default_place {
+        width: $s-64;
+        margin-right: $s-16;
+      }
+
+      .place__name {
+        @include typography-heading();
+        margin-bottom: $s-8;
+      }
+
+      .place__rating {
+        display: flex;
+        align-items: center;
+
+        .rating__number {
+          @include typography-heading();
+          margin-right: $s-16;
+        }
+      }
+    }
+
+    .reviews__overflow {
+      // Idea: set container padding to zero
+      overflow: auto;
+      padding: $s-16 $s-32 $s-32;
+      margin: $s-16 (-$s-32) $s-16;
+      // Top: 32 = 16 + 16
+      // Bottom: 48 = 32 + 16
+      // Container: 32
+      // Left & Right: 32
+
+      @include respond-to(sm) {
+        margin: $s-16 (-$s-16);
+        // Top: 32 = 16 + 16
+        // Bottom: 48 = 32 + 16
+        // Container: 16
+        // Left & Right: 32
+      }
+      @include respond-to(md) {
+        margin: $s-32 (-$s-16) $s-16;
+        // Top: 48 = 16 + 32
+        // Bottom: 48 = 32 + 16
+        // Container: 16
+        // Left & Right: 32
+      }
+      @include respond-to(xl) {
+        padding: $s-16;
+        margin: $s-48 (-$s-16);
+        // Top: 64 = 16 + 48
+        // Bottom: 64 = 16 + 48
+        // Container: 16
+        // Left & Right: 16
+      }
+    }
+
+    .reviews__list {
+      flex-wrap: nowrap;
+
+      @include respond-to(xl) {
+        flex-wrap: wrap;
+        margin-top: (-$s-48);
+      }
+    }
+
+    .reviews__item {
+      height: 100%;
+      padding: $s-32;
+      @include shadow($size-small: false, $hover: false);
+
+      @include respond-to(xl) {
+        height: auto;
+        margin-top: $s-48;
+      }
+
+      .item__author {
+        display: flex;
+        align-items: center;
+
+        .img__default_author {
+          width: $s-48;
+          margin-right: $s-16;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+
+        .author__name {
+          @include typography-body();
+        }
+      }
+
+      .reviews__stars {
+        margin: $s-16 0;
+      }
+
+      .item__content {
+        @include typography-body();
+
+        .button__circle {
+          margin: $s-16 0 0;
+        }
+      }
+    }
+
+    .button__primary {
+      @include respond-to(md) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .index__projects {
+    @include section-padding();
+
+    .projects__title {
+      @include section-title();
+    }
+
+    .projects__overflow {
+      // Idea: set container padding to zero
+      overflow: auto;
+      padding: $s-16 $s-32;
+      margin: (-$s-16) (-$s-32);
+      // Top: 0
+      // Bottom: 0
+      // Container: 32
+      // Left & Right: 32
+
+      @include respond-to(sm) {
+        margin: (-$s-16);
+        // Top: 0
+        // Bottom: 0
+        // Container: 16
+        // Left & Right: 32
+      }
+      @include respond-to(xl) {
+        padding: $s-16;
+        // Top: 0
+        // Bottom: 0
+        // Container: 16
+        // Left & Right: 16
+      }
+    }
+
+    .projects__list {
+      flex-wrap: nowrap;
+    }
+
+    .projects__item {
+      position: relative;
+      height: 100%;
+      padding: $s-32;
+      @include shadow($size-small: false, $hover: false);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .item__name {
+        @include typography-subheading();
+      }
+
+      .item__features {
+        ul {
+          margin: $s-16 0;
+          @include list-disc();
+        }
+      }
+
+      .img__default_decorator {
+        width: $s-64;
+        border-bottom-right-radius: $border-radius;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  .index__partners {
+    @include section-padding();
+
+    .partners__title {
+      @include section-title();
+    }
+
+    .partners__group {
+      & + .partners__group {
+        margin-top: $s-32;
+
+        @include respond-to(xl) {
+          margin-top: $s-48;
+        }
+      }
+    }
+
+    .group__subtitle {
+      @include typography-heading();
+    }
+
+    .list__item_partners {
+      margin-top: $s-32;
+
+      @include respond-to(xl) {
+        margin-top: $s-48;
+      }
+    }
+  }
+
+  .index__advantages {
+    @include section-padding();
+
+    .advantages__title {
+      @include section-title();
+    }
+
+    .advantages__list {
+      margin-top: (-$s-32);
+
+      @include respond-to(xl) {
+        margin-top: (-$s-48);
+      }
+    }
+
+    .list__item_advantages {
+      margin-top: $s-32;
+
+      @include respond-to(xl) {
+        margin-top: $s-48;
+      }
+    }
+  }
+
+  .index__faqs {
+    @include section-padding($type: "bottom");
+
+    .faqs__h2 {
+      @include section-title();
+    }
+
+    .faqs__accordion {
+      margin-top: (-$s-32);
+
+      @include respond-to(xl) {
+        margin-top: (-$s-48);
+      }
+
+      .accordion__item,
+      .accordion__button {
+        color: inherit;
+        background: inherit;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .accordion__item {
+        @include shadow();
+        margin-top: $s-32;
+
+        @include respond-to(xl) {
+          margin-top: $s-48;
+        }
+
+        &--active {
+          @include shadow($active: true);
+        }
+      }
+
+      .accordion__button {
+        @include typography-body();
+        position: relative;
+        // padding-left: padding-left(16) + icon_width(16) + icon_margin_right(8);
+        padding: $s-8 $s-16 $s-8 $s-40;
+        border-bottom: 1px solid color(shadow, border);
+
+        &::before,
+        &::after {
+          background: none;
+          margin: 0;
+          content: $ic-minus;
+          font-family: $font-icons;
+          width: $s-16;
+          height: $s-16;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          left: $s-16;
+          @include position-vertical-center();
+          transition: $transition;
+        }
+
+        &::after {
+          transform: translateY(-50%) rotate(0deg);
+        }
+
+        &.collapsed {
+          border-color: color(simple, transparent);
+
+          &::after {
+            transform: translateY(-50%) rotate(90deg);
+          }
+        }
+      }
+
+      .accordion__body {
+        padding: $s-16;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.projects__modal {
+  background: color(shadow, background);
+
+  .modal__content {
+    background: inherit;
+  }
+
+  .modal__body {
+    padding: $s-32 0;
+
+    @include respond-to(md) {
+      padding: $s-48 0;
+    }
+    @include respond-to(xl) {
+      padding: $s-64 0;
+    }
+  }
+
+  .modal__inner {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond-to(xxl) {
+      max-width: #{map-get($container-max-widths, xl)};
+    }
+  }
+
+  .modal__close,
+  .swiper__navigation .navigation__btn {
+    transition: $transition;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    @include shadow($size-small: false, $border-radius: 50%);
+    color: color(shadow, border);
+    background: color(simple, white);
+    width: $s-32;
+    height: $s-32;
+
+    @include respond-to(md) {
+      width: $s-48;
+      height: $s-48;
+    }
+
+    [class^="ic"] {
+      font-size: $s-16;
+
+      @include respond-to(md) {
+        font-size: $s-24;
+      }
+    }
+  }
+
+  .modal__close {
+    margin-left: auto;
+  }
+
+  .swiper__container {
+    @include shadow($size-small: false, $hover: false);
+    padding: $s-16;
+    margin: $s-32 0;
+
+    @include respond-to(md) {
+      padding: $s-32;
+      margin: $s-48 0;
+    }
+
+    .swiper-slide {
+      background: color(shadow, background);
+    }
+
+    .img__default_slide {
+      position: relative;
+      overflow: hidden;
+
+      @include respond-to(md) {
+        padding-bottom: 56.25%;
+      }
+
+      .img__inner {
+        border-radius: calc($border-radius / 2);
+
+        @include respond-to(md) {
+          position: absolute;
+          @include position-all-center();
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+
+    .slide__caption {
+      @include typography-body();
+      text-align: center;
+      padding: $s-16 0 0;
+
+      @include respond-to(md) {
+        padding-top: $s-32;
+      }
+    }
+  }
+
+  .swiper__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .navigation__counter {
+      width: auto;
+      @include typography-body();
+      margin: 0 $s-16;
+
+      @include respond-to(md) {
+        margin: 0 $s-32;
+      }
+    }
+  }
+}

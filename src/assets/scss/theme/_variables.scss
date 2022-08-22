@@ -1,0 +1,65 @@
+// Fonts
+$font-os-regular: "OpenSans-Regular" !default;
+$font-os-bold: "OpenSans-Bold" !default;
+$font-os-semibold: "OpenSans-Semibold" !default;
+$font-icons: "font-icons" !default;
+
+// Icons
+$ic-minus: "\e90b";
+$ic-arrow-down: "\e900";
+$ic-arrow-left: "\e901";
+$ic-arrow-right: "\e902";
+$ic-arrow-top: "\e903";
+$ic-camera: "\e904";
+$ic-close: "\e905";
+$ic-menu: "\e906";
+$ic-search: "\e907";
+$ic-social-gmail: "\e908";
+$ic-social-insta: "\e909";
+$ic-social-phone: "\e90a";
+
+// Sizes
+$s-8: 8px;
+$s-16: $s-8 * 2;
+$s-24: $s-8 * 3;
+$s-32: $s-8 * 4;
+$s-40: $s-8 * 5;
+$s-48: $s-8 * 6;
+$s-56: $s-8 * 7;
+$s-64: $s-8 * 8;
+$s-72: $s-8 * 9;
+$s-80: $s-8 * 10;
+$s-88: $s-8 * 11;
+$s-96: $s-8 * 12;
+$s-128: $s-64 * 2;
+
+// Colors
+$simple: (
+  transparent: transparent,
+  black: #1b1c1e,
+  white: #fffefd,
+  yellow: #fcd900,
+  table: #262833,
+);
+
+$shadow: (
+  background: #e6e7ee,
+  light: #ffffff,
+  dark: #b8b9be,
+  border: #d1d9e6,
+);
+
+$colors: (
+  simple: $simple,
+  shadow: $shadow,
+);
+
+// Z-index
+$z-index-m1: -1;
+$z-index-p1: 1;
+// p100: Header
+$z-index-p100: 100;
+
+// General
+$border-radius: 10px;
+$transition: all ease-out 0.3s;

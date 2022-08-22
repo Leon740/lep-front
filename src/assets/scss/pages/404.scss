@@ -1,0 +1,41 @@
+.page__404 {
+  padding: $s-96 0;
+
+  @include respond-to(xl) {
+    padding: $s-128 0;
+  }
+
+  .img__default_404 {
+    width: $s-128;
+    margin: 0 auto;
+  }
+
+  .text__404 {
+    text-align: center;
+    margin: $s-48 0;
+
+    @include respond-to(xl) {
+      margin: $s-64 0;
+    }
+
+    .text__title {
+      @include typography-title();
+    }
+
+    .text__subtitle {
+      @include typography-heading();
+      margin: $s-32 0 0;
+    }
+  }
+
+  .links__404 {
+    display: flex;
+    justify-content: center;
+
+    .links__item {
+      & + .links__item {
+        margin-left: $s-32;
+      }
+    }
+  }
+}

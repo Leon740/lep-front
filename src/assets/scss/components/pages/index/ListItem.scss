@@ -1,0 +1,55 @@
+.list__item {
+  display: flex;
+  flex-wrap: wrap;
+
+  @mixin item-title() {
+    margin-left: $s-24;
+    width: calc(100% - $s-96 - $s-24);
+    display: flex;
+    align-items: center;
+  }
+
+  .img__default {
+    width: $s-96;
+    height: $s-96;
+    padding: $s-16;
+    @include shadow();
+    flex-shrink: 0;
+  }
+
+  .item__title {
+    .button__secondary {
+      text-decoration: underline;
+    }
+
+    .title__inner {
+      @include typography-body();
+    }
+  }
+
+  &_vertical {
+    flex-direction: column;
+
+    .item__title {
+      margin-top: $s-24;
+    }
+  }
+
+  &_horizontal {
+    .item__title {
+      @include item-title();
+    }
+  }
+
+  &_hasParagraph {
+    .item__title {
+      @include item-title();
+    }
+
+    .item__paragraph {
+      @include typography-body();
+      width: 100%;
+      margin-top: $s-24;
+    }
+  }
+}
