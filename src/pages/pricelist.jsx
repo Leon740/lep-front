@@ -532,7 +532,7 @@ function PricelistPage() {
 
   function notFoundButtonOnClick(label) {
     setSearchQuery(label);
-    // 88 = header height
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
