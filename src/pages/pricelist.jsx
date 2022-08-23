@@ -534,7 +534,7 @@ function PricelistPage() {
     setSearchQuery(label);
     // 88 = header height
     window.scrollTo({
-      top: 88,
+      top: 0,
       behavior: 'smooth',
     });
   }
