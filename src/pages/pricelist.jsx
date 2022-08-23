@@ -516,8 +516,6 @@ function PricelistPage() {
   // Logic
   const [searchQuery, setSearchQuery] = useState('');
 
-  const inputRef = useRef(null);
-
   const isSearchQuery = searchQuery.length > 1;
 
   function sanitizeStringFunc(string) {
@@ -534,9 +532,10 @@ function PricelistPage() {
 
   function notFoundButtonOnClick(label) {
     setSearchQuery(label);
-    inputRef.current.scrollIntoView({
+    // 88 = header height
+    window.scrollTo({
+      top: 88,
       behavior: 'smooth',
-      block: 'end',
     });
   }
 
@@ -548,7 +547,7 @@ function PricelistPage() {
 
           <Row className="justify-content-center">
             <Col xs={12} md={6} lg={5} xl={4}>
-              <div className="pricelist__search" ref={inputRef}>
+              <div className="pricelist__search">
                 <div className="search__icon">
                   <Icon className="search" />
                 </div>
