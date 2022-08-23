@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable react/no-danger */
 // React
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 // Data
 import { graphql, useStaticQuery } from 'gatsby';
@@ -516,6 +516,8 @@ function PricelistPage() {
   // Logic
   const [searchQuery, setSearchQuery] = useState('');
 
+  const inputRef = useRef(null);
+
   const isSearchQuery = searchQuery.length > 1;
 
   function sanitizeStringFunc(string) {
@@ -530,6 +532,14 @@ function PricelistPage() {
     return table;
   }
 
+  function notFoundButtonOnClick(label) {
+    setSearchQuery(label);
+    inputRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  }
+
   return (
     <Main className="pricelist">
       <div className="pricelist__inner">
@@ -538,7 +548,7 @@ function PricelistPage() {
 
           <Row className="justify-content-center">
             <Col xs={12} md={6} lg={5} xl={4}>
-              <div className="pricelist__search">
+              <div className="pricelist__search" ref={inputRef}>
                 <div className="search__icon">
                   <Icon className="search" />
                 </div>
@@ -593,7 +603,7 @@ function PricelistPage() {
               <h3 className="results__subtitle">{notFoundSubtitle}</h3>
               <div className="results__buttons">
                 {notFoundButtons.map((button) => (
-                  <Button key={button.id} className="primary" label={button.label} onClick={() => setSearchQuery(button.label)} />
+                  <Button key={button.id} className="primary" label={button.label} onClick={() => notFoundButtonOnClick(button.label)} />
                 ))}
               </div>
             </div>
