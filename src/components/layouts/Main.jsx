@@ -60,7 +60,7 @@ function Main(props) {
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta name="keywords" content={keywords} />
-          <link rel="alternate" href="/" hrefLang={lang} />
+          <link rel="alternate" href={url} hrefLang={lang} />
           {/* OG */}
           <meta property="og:locale" content={lang} />
           <meta property="og:title" content={title} />
