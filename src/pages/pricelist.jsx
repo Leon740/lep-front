@@ -522,7 +522,14 @@ function PricelistPage() {
     return string.trim().toLowerCase();
   }
 
+  // scroll table to the start (left side) on search
+  const tableRef = useRef(null);
+
   function searchFunc() {
+    if (tableRef.current?.scrollLeft) {
+      tableRef.current.scrollLeft = 0;
+    }
+
     if (isSearchQuery) {
       return table.filter((tr) => sanitizeStringFunc(tr.name).includes(sanitizeStringFunc(searchQuery)));
     }
@@ -546,7 +553,7 @@ function PricelistPage() {
           <h1 className="pricelist__title">{pageTitle}</h1>
 
           <Row className="justify-content-center">
-            <Col xs={12} md={6} lg={5} xl={4}>
+            <Col xs={12} sm={8} md={6} lg={5} xl={4}>
               <div className="pricelist__search">
                 <div className="search__icon">
                   <Icon className="search" />
@@ -566,47 +573,49 @@ function PricelistPage() {
         </Container>
 
         <Container fluid="lg">
-          {searchFunc().length > 0 ? (
-            <div className="pricelist__table">
-              <table className="table__inner">
-                <thead className="table__thead">
-                  <tr className="table__tr">
-                    <th className="table__th col">{thead.number}</th>
-                    <th className="table__th col-8">{thead.name}</th>
-                    <th className="table__th col">{thead.unit}</th>
-                    <th className="table__th col-2">{thead.price}</th>
-                  </tr>
-                </thead>
-                <tbody className="table__tbody">
-                  {searchFunc().map((tr, index) => (
-                    <tr key={tr.id} className="table__tr">
-                      <td className="table__td col">{index + 1}</td>
-                      <td className="table__td table__td_name col-8">
-                        {isSearchQuery ? (
-                          <span dangerouslySetInnerHTML={{ __html: sanitizeStringFunc(tr.name).replace(sanitizeStringFunc(searchQuery), `<span class='td__search'>${sanitizeStringFunc(searchQuery)}</span>`) }} />
-                        ) : (
-                          tr.name
-                        )}
-                      </td>
-                      <td className="table__td col">{tr.unit}</td>
-                      <td className="table__td col-2">{tr.price}</td>
+          <div className={`pricelist__results ${searchFunc().length > 0 ? 'pricelist__results_scroll' : ''}`} ref={tableRef}>
+            {searchFunc().length > 0 ? (
+              <div className="results__table">
+                <table className="table__inner">
+                  <thead className="table__thead">
+                    <tr className="table__tr">
+                      <th className="table__th col">{thead.number}</th>
+                      <th className="table__th col-8">{thead.name}</th>
+                      <th className="table__th col">{thead.unit}</th>
+                      <th className="table__th col-2">{thead.price}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className="pricelist__results">
-              <Img src={notFoundImageUrl} alt={notFoundImageAlt} className="results" />
-              <h2 className="results__title">{notFoundTitle}</h2>
-              <h3 className="results__subtitle">{notFoundSubtitle}</h3>
-              <div className="results__buttons">
-                {notFoundButtons.map((button) => (
-                  <Button key={button.id} className="primary" label={button.label} onClick={() => notFoundButtonOnClick(button.label)} />
-                ))}
+                  </thead>
+                  <tbody className="table__tbody">
+                    {searchFunc().map((tr, index) => (
+                      <tr key={tr.id} className="table__tr">
+                        <td className="table__td col">{index + 1}</td>
+                        <td className="table__td table__td_name col-8">
+                          {isSearchQuery ? (
+                            <span dangerouslySetInnerHTML={{ __html: sanitizeStringFunc(tr.name).replace(sanitizeStringFunc(searchQuery), `<span class='td__search'>${sanitizeStringFunc(searchQuery)}</span>`) }} />
+                          ) : (
+                            tr.name
+                          )}
+                        </td>
+                        <td className="table__td col">{tr.unit}</td>
+                        <td className="table__td col-2">{tr.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="results__notfound">
+                <Img src={notFoundImageUrl} alt={notFoundImageAlt} className="notfound" />
+                <h2 className="notfound__title">{notFoundTitle}</h2>
+                <h3 className="notfound__subtitle">{notFoundSubtitle}</h3>
+                <div className="notfound__buttons">
+                  {notFoundButtons.map((button) => (
+                    <Button key={button.id} className="primary" label={button.label} onClick={() => notFoundButtonOnClick(button.label)} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </Container>
       </div>
     </Main>

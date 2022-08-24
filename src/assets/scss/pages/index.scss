@@ -199,8 +199,8 @@
     }
 
     .reviews__overflow {
+      @include scroll();
       // Idea: set container padding to zero
-      overflow: auto;
       padding: $s-16 $s-32 $s-32;
       margin: $s-16 (-$s-32) $s-16;
       // Top: 32 = 16 + 16
@@ -295,8 +295,8 @@
     }
 
     .projects__overflow {
+      @include scroll();
       // Idea: set container padding to zero
-      overflow: auto;
       padding: $s-16 $s-32;
       margin: (-$s-16) (-$s-32);
       // Top: 0

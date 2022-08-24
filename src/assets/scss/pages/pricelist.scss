@@ -64,120 +64,127 @@
     }
   }
 
-  .pricelist__table {
-    // Idea: set container padding to zero
-    overflow: auto;
-    padding: $s-16 $s-32;
-    margin: (-$s-16) (-$s-32);
-    // Top: 0
-    // Bottom: 0
-    // Container: 32
-    // Left & Right: 32
-
-    @include respond-to(sm) {
-      margin: (-$s-16);
+  .pricelist__results {
+    &_scroll {
+      @include scroll();
+      // Idea: set container padding to zero
+      padding: $s-16 $s-32;
+      margin: (-$s-16) (-$s-32);
       // Top: 0
       // Bottom: 0
-      // Container: 16
+      // Container: 32
       // Left & Right: 32
-    }
-    @include respond-to(lg) {
-      padding: $s-16;
-      // Top: 0
-      // Bottom: 0
-      // Container: 16
-      // Left & Right: 16
+
+      @include respond-to(sm) {
+        margin: (-$s-16);
+        // Top: 0
+        // Bottom: 0
+        // Container: 16
+        // Left & Right: 32
+      }
+      @include respond-to(md) {
+        padding: $s-16;
+        // Top: 0
+        // Bottom: 0
+        // Container: 16
+        // Left & Right: 16
+      }
     }
 
-    .table__inner {
-      @include shadow($size-small: false, $hover: false);
+    .results__table {
       min-width: 700px;
 
       @include respond-to(md) {
         min-width: 100%;
       }
-    }
 
-    .table__th,
-    .table__td {
-      padding: $s-16;
-      vertical-align: top;
-    }
-
-    .table__th {
-      @include typography-subheading();
-    }
-
-    .table__td {
-      @include typography-body();
-
-      &_name {
-        &::first-letter {
-          text-transform: uppercase;
-        }
+      .table__inner {
+        min-width: 100%;
+        @include shadow($size-small: false, $hover: false);
       }
 
-      .td__search {
-        background: color(simple, yellow);
+      .table__th,
+      .table__td {
+        padding: $s-16;
+        vertical-align: top;
       }
-    }
-
-    .table__thead {
-      background: rgba(color(simple, table), 0.05);
 
       .table__th {
-        &:first-of-type {
-          border-top-left-radius: $border-radius;
+        @include typography-subheading();
+        white-space: nowrap;
+      }
+
+      .table__td {
+        @include typography-body();
+
+        &_name {
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
 
-        &:last-of-type {
-          border-top-right-radius: $border-radius;
+        .td__search {
+          background: color(simple, yellow);
+        }
+      }
+
+      .table__thead {
+        background: rgba(color(simple, table), 0.05);
+
+        .table__th {
+          &:first-of-type {
+            border-top-left-radius: $border-radius;
+          }
+
+          &:last-of-type {
+            border-top-right-radius: $border-radius;
+          }
+        }
+      }
+
+      .table__tbody {
+        .table__tr {
+          &:not(:last-of-type) {
+            border-bottom: 1px solid color(shadow, border);
+          }
+
+          &:nth-of-type(even) {
+            background: rgba(color(simple, table), 0.03);
+          }
         }
       }
     }
 
-    .table__tbody {
-      .table__tr {
-        &:not(:last-of-type) {
-          border-bottom: 1px solid color(shadow, border);
-        }
-
-        &:nth-of-type(even) {
-          background: rgba(color(simple, table), 0.03);
-        }
+    .results__notfound {
+      .img__default_notfound {
+        width: $s-128;
+        margin: 0 auto;
       }
-    }
-  }
 
-  .pricelist__results {
-    .img__default_results {
-      width: $s-128;
-      margin: 0 auto;
-    }
+      .notfound__title,
+      .notfound__subtitle {
+        margin: $s-32 0 0;
+        @include typography-heading();
+        text-align: center;
+      }
 
-    .results__title,
-    .results__subtitle {
-      margin: $s-32 0 0;
-      @include typography-heading();
-      text-align: center;
-    }
+      .notfound__title {
+        margin: $s-32 0 0;
+      }
 
-    .results__title {
-      margin: $s-32 0 0;
-    }
+      .notfound__subtitle {
+        margin: $s-24 0 $s-48;
+      }
 
-    .results__subtitle {
-      margin: $s-24 0 $s-48;
-    }
+      .notfound__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: -($s-16);
 
-    .results__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: -($s-16);
-
-      .button__primary {
-        margin: $s-16;
+        .button__primary {
+          margin: $s-16;
+        }
       }
     }
   }
