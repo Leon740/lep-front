@@ -69,6 +69,7 @@ function IndexReviews() {
           }
           reviewsAllButton {
             label
+            url
           }
         }
       }
@@ -106,6 +107,7 @@ function IndexReviews() {
     reviewsItemButton,
     reviewsAllButton: {
       label: reviewsAllBtnLabel,
+      url: reviewsAllBtnUrl,
     },
   } = DATA.allStrapiPageIndex.nodes[0];
 
@@ -140,9 +142,11 @@ function IndexReviews() {
         </div>
       </Container>
 
-      <Container>
-        <Button className="primary" to="#" icon="arrow-right" iconOrder="order-1" label={reviewsAllBtnLabel} labelOrder="order-0" />
-      </Container>
+      {reviewsAllBtnUrl && (
+        <Container>
+          <Button className="primary" to={reviewsAllBtnUrl} icon="arrow-right" iconOrder="order-1" label={reviewsAllBtnLabel} labelOrder="order-0" />
+        </Container>
+      )}
     </div>
   );
 }
