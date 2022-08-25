@@ -92,9 +92,7 @@ function IndexServices() {
           url
           img {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -115,7 +113,7 @@ function IndexServices() {
         <Row as="ul" className="services__list">
           {servicesList.map((servicesItem) => {
             const {
-              id, img: { localFile: { url: imgUrl }, alternativeText: imgAlt }, title, url,
+              id, img: { alternativeText: imgAlt, url: imgUrl }, title, url,
             } = servicesItem;
 
             return (

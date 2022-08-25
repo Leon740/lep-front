@@ -52,9 +52,7 @@ function IndexAbout() {
           aboutParagraph
           aboutLocationIcon {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
           aboutLocationsList {
             city
@@ -67,9 +65,7 @@ function IndexAbout() {
           }
           aboutImg {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -82,9 +78,7 @@ function IndexAbout() {
     aboutParagraph,
     aboutLocationIcon: {
       alternativeText: locationIconAlt,
-      localFile: {
-        url: locationIconUrl,
-      },
+      url: locationIconUrl,
     },
     aboutLocationsList,
     aboutList: {
@@ -94,9 +88,7 @@ function IndexAbout() {
     },
     aboutImg: {
       alternativeText: aboutImgAlt,
-      localFile: {
-        url: aboutImgUrl,
-      },
+      url: aboutImgUrl,
     },
   } = DATA;
 

@@ -47,9 +47,7 @@ function NotFoundPage() {
           subtitle
           image {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
           links {
             id
@@ -63,23 +61,27 @@ function NotFoundPage() {
   `;
   const DATA = useStaticQuery(query).allStrapiPageNotFound.nodes[0];
   const {
-    image: { alternativeText, localFile: { url } }, title, subtitle, links,
+    image: { alternativeText: imgAlt, url: imgUrl }, title, subtitle, links,
   } = DATA;
 
   return (
     <Main className="404">
       <Container>
-        <Img src={url} alt={alternativeText} className="404" />
+        <Img src={imgUrl} alt={imgAlt} className="404" />
         <section className="text__404">
           <h1 className="text__title">{title}</h1>
           <h2 className="text__subtitle">{subtitle}</h2>
         </section>
         <ul className="links__404">
-          {links.map((linksItem) => (
-            <li className="links__item" key={linksItem.id}>
-              <Button className="primary" to={linksItem.url} label={linksItem.label} />
-            </li>
-          ))}
+          {links.map((linksItem) => {
+            const { id, url, label } = linksItem;
+
+            return (
+              <li className="links__item" key={id}>
+                <Button className="primary" to={url} label={label} />
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </Main>

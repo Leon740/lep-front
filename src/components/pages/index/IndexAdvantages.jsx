@@ -75,9 +75,7 @@ function IndexAdvantages() {
           title
           img {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -98,7 +96,7 @@ function IndexAdvantages() {
         <Row as="ul" className="advantages__list">
           {advantagesList.map((advantagesItem) => {
             const {
-              id, img: { localFile: { url: imgUrl }, alternativeText: imgAlt }, title,
+              id, img: { alternativeText: imgAlt, url: imgUrl }, title,
             } = advantagesItem;
 
             return (

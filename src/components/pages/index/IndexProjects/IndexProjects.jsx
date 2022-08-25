@@ -142,9 +142,7 @@ function IndexProjects() {
             id
             caption
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }

@@ -17,9 +17,7 @@ function ReviewsStars() {
         nodes {
           reviewsStar {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -29,9 +27,7 @@ function ReviewsStars() {
 
   const {
     alternativeText,
-    localFile: {
-      url,
-    },
+    url,
   } = DATA;
 
   return (

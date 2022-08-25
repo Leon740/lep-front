@@ -27,9 +27,7 @@ function IndexHero() {
           heroTitleEmoji
           heroImage {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -40,9 +38,7 @@ function IndexHero() {
   const {
     heroImage: {
       alternativeText: heroImgAlt,
-      localFile: {
-        url: heroImgUrl,
-      },
+      url: heroImgUrl,
     },
     heroSubtitle,
     heroTitle1,

@@ -24,7 +24,7 @@ function ReviewsItem(props) {
   const {
     avatar: {
       alternativeText: avatarAlt,
-      localFile: { url: avatarUrl },
+      url: avatarUrl,
     },
     name,
     content: {

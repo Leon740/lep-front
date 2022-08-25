@@ -494,9 +494,7 @@ function PricelistPage() {
           }
           notFoundImage {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
           notFoundTitle
           notFoundSubtitle
@@ -510,7 +508,7 @@ function PricelistPage() {
   `;
   const DATA = useStaticQuery(query).allStrapiPagePricelist.nodes[0];
   const {
-    pageTitle, inputPlaceholder, thead, table, notFoundImage: { alternativeText: notFoundImageAlt, localFile: { url: notFoundImageUrl } }, notFoundTitle, notFoundSubtitle, notFoundButtons,
+    pageTitle, inputPlaceholder, thead, table, notFoundImage: { alternativeText: notFoundImageAlt, url: notFoundImageUrl }, notFoundTitle, notFoundSubtitle, notFoundButtons,
   } = DATA;
 
   // Logic

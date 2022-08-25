@@ -59,9 +59,7 @@ function IndexReviews() {
           placeRating
           placeImg {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
           reviewsItemButton {
             label
@@ -84,9 +82,7 @@ function IndexReviews() {
           }
           avatar {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -100,9 +96,7 @@ function IndexReviews() {
     placeRating,
     placeImg: {
       alternativeText: placeImgAlt,
-      localFile: {
-        url: placeImgUrl,
-      },
+      url: placeImgUrl,
     },
     reviewsItemButton,
     reviewsAllButton: {

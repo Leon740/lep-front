@@ -19,16 +19,14 @@ function Logo() {
         nodes {
           logo {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
     }
   `;
   const DATA = useStaticQuery(query).allStrapiElementPrimaryMenu.nodes[0];
-  const { logo: { alternativeText, localFile: { url } } } = DATA;
+  const { logo: { alternativeText, url } } = DATA;
 
   return (
     <div className="site__logo">

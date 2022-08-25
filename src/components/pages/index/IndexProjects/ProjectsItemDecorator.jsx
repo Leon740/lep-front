@@ -15,9 +15,7 @@ function ProjectsItemDecorator() {
         nodes {
           projectsItemDecorator {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
@@ -27,9 +25,7 @@ function ProjectsItemDecorator() {
 
   const {
     alternativeText,
-    localFile: {
-      url,
-    },
+    url,
   } = DATA;
 
   return (

@@ -52,7 +52,7 @@ function ProjectsItemModal(props) {
             >
               {photos.map((photosItem) => {
                 const {
-                  id, caption, alternativeText: imgAlt, localFile: { url: imgUrl },
+                  id, caption, alternativeText: imgAlt, url: imgUrl,
                 } = photosItem;
                 return (
                   <SwiperSlide key={id} tag="li">

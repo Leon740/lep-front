@@ -64,7 +64,7 @@ function ArticlesItem(props) {
       <Row as="ul">
         {articleList.map((partnersItem) => {
           const {
-            id, title, paragraph, img: { alternativeText, localFile: { url } },
+            id, title, paragraph, img: { alternativeText, url },
           } = partnersItem;
 
           return (
@@ -102,9 +102,7 @@ function IndexPartners() {
           paragraph
           img {
             alternativeText
-            localFile {
-              url
-            }
+            url
           }
         }
       }
