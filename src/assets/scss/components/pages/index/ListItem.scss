@@ -13,7 +13,7 @@
     width: $s-96;
     height: $s-96;
     padding: $s-16;
-    @include shadow();
+    @include shadow($hover: false);
     flex-shrink: 0;
   }
 
