@@ -46,9 +46,7 @@ import Button from '../Button';
 // ];
 
 function PrimaryMenu(props) {
-  const {
-    isHeader, isTablet, headerIsOpened, headerHandler,
-  } = props;
+  const { isHeader, isTablet, headerIsOpened, headerHandler } = props;
 
   // Data
   const query = graphql`
@@ -70,21 +68,30 @@ function PrimaryMenu(props) {
   return (
     <div className="primary__menu">
       <Row className="justify-content-xl-between align-items-xl-center">
-        {links.map(
-          (button) => (
-            <Col key={button.id} xs={12}>
-              {isHeader && isTablet ? (
-                <Button className="secondary" to={button.url} label={button.label} onClick={headerHandler} />
-              ) : (
-                <Button className="secondary" to={button.url} label={button.label} />
-              )}
-            </Col>
-          ),
-        )}
+        {links.map((button) => (
+          <Col key={button.id} xs={12}>
+            {isHeader && isTablet ? (
+              <Button
+                className="secondary"
+                to={button.url}
+                label={button.label}
+                onClick={headerHandler}
+              />
+            ) : (
+              <Button className="secondary" to={button.url} label={button.label} />
+            )}
+          </Col>
+        ))}
 
         {isHeader && !isTablet && (
           <Col xs={12}>
-            <Button className="primary" active={headerIsOpened} onClick={headerHandler} icon={headerIsOpened ? 'close' : ''} label="Контакты" />
+            <Button
+              className="primary"
+              active={headerIsOpened}
+              onClick={headerHandler}
+              icon={headerIsOpened ? 'close' : ''}
+              label="Контакты"
+            />
           </Col>
         )}
       </Row>
@@ -96,7 +103,7 @@ PrimaryMenu.propTypes = {
   isHeader: PropTypes.bool.isRequired,
   isTablet: PropTypes.bool.isRequired,
   headerIsOpened: PropTypes.bool.isRequired,
-  headerHandler: PropTypes.func.isRequired,
+  headerHandler: PropTypes.func.isRequired
 };
 
 export default PrimaryMenu;

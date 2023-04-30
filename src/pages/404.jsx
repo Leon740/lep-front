@@ -61,7 +61,10 @@ function NotFoundPage() {
   `;
   const DATA = useStaticQuery(query).allStrapiPageNotFound.nodes[0];
   const {
-    image: { alternativeText: imgAlt, url: imgUrl }, title, subtitle, links,
+    image: { alternativeText: imgAlt, url: imgUrl },
+    title,
+    subtitle,
+    links
   } = DATA;
 
   return (

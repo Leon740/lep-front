@@ -13,7 +13,7 @@ import Button from '../../../global/Button';
 import ReviewsStars from './ReviewsStars';
 import ReviewsItem from './ReviewsItem';
 
-// Harddata
+// HardData
 // import reviewsGmapsImg from '../../../../assets/images/pages/index/index-reviews/reviews-gmaps.svg';
 // import reviewsAuthorImg from '../../../../assets/images/pages/index/index-reviews/reviews-author.svg';
 
@@ -94,15 +94,9 @@ function IndexReviews() {
     reviewsTitle,
     placeTitle,
     placeRating,
-    placeImg: {
-      alternativeText: placeImgAlt,
-      url: placeImgUrl,
-    },
+    placeImg: { alternativeText: placeImgAlt, url: placeImgUrl },
     reviewsItemButton,
-    reviewsAllButton: {
-      label: reviewsAllBtnLabel,
-      url: reviewsAllBtnUrl,
-    },
+    reviewsAllButton: { label: reviewsAllBtnLabel, url: reviewsAllBtnUrl }
   } = DATA.allStrapiPageIndex.nodes[0];
 
   const reviewsList = DATA.allStrapiIndexReview.nodes;
@@ -138,7 +132,14 @@ function IndexReviews() {
 
       {reviewsAllBtnUrl && (
         <Container>
-          <Button className="primary" to={reviewsAllBtnUrl} icon="arrow-right" iconOrder="order-1" label={reviewsAllBtnLabel} labelOrder="order-0" />
+          <Button
+            className="primary"
+            to={reviewsAllBtnUrl}
+            icon="arrow-right"
+            iconOrder="order-1"
+            label={reviewsAllBtnLabel}
+            labelOrder="order-0"
+          />
         </Container>
       )}
     </div>

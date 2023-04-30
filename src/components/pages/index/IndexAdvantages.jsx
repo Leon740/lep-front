@@ -8,12 +8,12 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Container, Row, Col } from 'react-bootstrap';
 
 // Hooks
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import useWindowSize from '../../../hooks/useWindowSize';
 
 // Components
 import ListItem from './ListItem';
 
-// Harddata
+// HardData
 // import advantagesImg1 from '../../../assets/images/pages/index/index-advantages/advantages-1.svg';
 // import advantagesImg2 from '../../../assets/images/pages/index/index-advantages/advantages-2.svg';
 // import advantagesImg3 from '../../../assets/images/pages/index/index-advantages/advantages-3.svg';
@@ -86,7 +86,7 @@ function IndexAdvantages() {
   const advantagesList = DATA.allStrapiIndexAdvantage.nodes;
 
   // Logic
-  const { width: screenWidth } = useWindowDimensions();
+  const { screenWidth } = useWindowSize();
   const isMobile = screenWidth < 768;
 
   return (
@@ -96,12 +96,20 @@ function IndexAdvantages() {
         <Row as="ul" className="advantages__list">
           {advantagesList.map((advantagesItem) => {
             const {
-              id, img: { alternativeText: imgAlt, url: imgUrl }, title,
+              id,
+              img: { alternativeText: imgAlt, url: imgUrl },
+              title
             } = advantagesItem;
 
             return (
               <Col key={id} as="li" xs={12} md={6} xl={4}>
-                <ListItem type={isMobile ? 'horizontal' : 'vertical'} className="advantages" src={imgUrl} alt={imgAlt} title={title} />
+                <ListItem
+                  type={isMobile ? 'horizontal' : 'vertical'}
+                  className="advantages"
+                  src={imgUrl}
+                  alt={imgAlt}
+                  title={title}
+                />
               </Col>
             );
           })}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // React
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
@@ -6,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 
 // Hooks
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import useWindowSize from '../../../hooks/useWindowSize';
 
 // Components
 import Button from '../Button';
@@ -18,7 +19,7 @@ function MainMenu(props) {
   const { element } = props;
   const Tag = element;
 
-  const { width: screenWidth } = useWindowDimensions();
+  const { screenWidth } = useWindowSize();
 
   const isHeader = element === 'header';
   const isTablet = screenWidth < 1200;
@@ -44,12 +45,17 @@ function MainMenu(props) {
     <Tag className={`site__${element}`} ref={headerRef}>
       <Container>
         <Row className="align-items-md-end align-items-xl-center">
-
           <Col xs={12} xl={2}>
             {isHeader && isTablet ? (
               <div className="header__handler">
                 <Logo />
-                <Button className="primary" active={headerIsOpened} onClick={() => headerHandler()} icon={headerIsOpened ? 'close' : 'menu'} label="Меню" />
+                <Button
+                  className="primary"
+                  active={headerIsOpened}
+                  onClick={() => headerHandler()}
+                  icon={headerIsOpened ? 'close' : 'menu'}
+                  label="Меню"
+                />
               </div>
             ) : (
               <Logo />
@@ -75,7 +81,7 @@ function MainMenu(props) {
 }
 
 MainMenu.propTypes = {
-  element: PropTypes.oneOf(['header', 'footer']).isRequired,
+  element: PropTypes.oneOf(['header', 'footer']).isRequired
 };
 
 export default MainMenu;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
 // Hooks
-import useWindowDimensions from '../../../../hooks/useWindowDimensions';
+import useWindowSize from '../../../../hooks/useWindowSize';
 
 // Components
 import Img from '../../../global/Img';
@@ -16,31 +16,20 @@ import Button from '../../../global/Button';
 
 function ReviewsItem(props) {
   // Data
-  const {
-    review,
-    button,
-  } = props;
+  const { review, button } = props;
 
   const {
-    avatar: {
-      alternativeText: avatarAlt,
-      url: avatarUrl,
-    },
+    avatar: { alternativeText: avatarAlt, url: avatarUrl },
     name,
     content: {
-      data: {
-        content,
-      },
-    },
+      data: { content }
+    }
   } = review;
 
-  const {
-    label: btnLabel = 'Читать далее',
-    icon: btnIcon = 'arrow-down',
-  } = button;
+  const { label: btnLabel = 'Читать далее', icon: btnIcon = 'arrow-down' } = button;
 
   // Logic
-  const { width: screenWidth } = useWindowDimensions();
+  const { screenWidth } = useWindowSize();
   const isMobile = screenWidth < 768;
 
   const [readMore, setReadMore] = useState(content.length > 200);
@@ -67,9 +56,7 @@ function ReviewsItem(props) {
       <ReviewsStars />
 
       <div className="item__content">
-        <ReactMarkdown>
-          {readMore ? `${content.substring(0, 200)}... ` : content}
-        </ReactMarkdown>
+        <ReactMarkdown>{readMore ? `${content.substring(0, 200)}... ` : content}</ReactMarkdown>
 
         {readMore && (
           <Button
@@ -89,20 +76,20 @@ ReviewsItem.propTypes = {
     avatar: PropTypes.shape({
       alternativeText: PropTypes.string.isRequired,
       localFile: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }),
+        url: PropTypes.string.isRequired
+      })
     }),
     name: PropTypes.string.isRequired,
     content: PropTypes.shape({
       data: PropTypes.shape({
-        content: PropTypes.string.isRequired,
-      }),
-    }),
+        content: PropTypes.string.isRequired
+      })
+    })
   }),
   button: PropTypes.shape({
     label: PropTypes.string,
-    icon: PropTypes.string,
-  }),
+    icon: PropTypes.string
+  })
 };
 
 export default ReviewsItem;

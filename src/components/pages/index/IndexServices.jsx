@@ -8,12 +8,12 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Container, Row, Col } from 'react-bootstrap';
 
 // Hooks
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import useWindowSize from '../../../hooks/useWindowSize';
 
 // Components
 import ListItem from './ListItem';
 
-// Harddata
+// HardData
 // import servicesImg1 from '../../../assets/images/pages/index/index-services/services-1.svg';
 // import servicesImg2 from '../../../assets/images/pages/index/index-services/services-2.svg';
 // import servicesImg3 from '../../../assets/images/pages/index/index-services/services-3.svg';
@@ -103,7 +103,7 @@ function IndexServices() {
   const servicesList = DATA.allStrapiIndexService.nodes;
 
   // Logic
-  const { width: screenWidth } = useWindowDimensions();
+  const { screenWidth } = useWindowSize();
   const isMobile = screenWidth < 768;
 
   return (
@@ -113,12 +113,22 @@ function IndexServices() {
         <Row as="ul" className="services__list">
           {servicesList.map((servicesItem) => {
             const {
-              id, img: { alternativeText: imgAlt, url: imgUrl }, title, url,
+              id,
+              img: { alternativeText: imgAlt, url: imgUrl },
+              title,
+              url
             } = servicesItem;
 
             return (
               <Col key={id} as="li" xs={12} md={6} xl={4}>
-                <ListItem type={isMobile ? 'horizontal' : 'vertical'} className="services" src={imgUrl} alt={imgAlt} title={title} to={url} />
+                <ListItem
+                  type={isMobile ? 'horizontal' : 'vertical'}
+                  className="services"
+                  src={imgUrl}
+                  alt={imgAlt}
+                  title={title}
+                  to={url}
+                />
               </Col>
             );
           })}

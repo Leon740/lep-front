@@ -10,7 +10,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 // Components
 import ProjectsItem from './ProjectsItem';
 
-// Harddata
+// HardData
 // import projectsImg1 from '../../../../assets/images/pages/index/index-projects/projects-img-1.webp';
 // import projectsImg2 from '../../../../assets/images/pages/index/index-projects/projects-img-2.webp';
 // import projectsImg3 from '../../../../assets/images/pages/index/index-projects/projects-img-3.webp';
@@ -150,10 +150,7 @@ function IndexProjects() {
   `;
   const DATA = useStaticQuery(query);
 
-  const {
-    projectsTitle,
-    projectsItemButton,
-  } = DATA.allStrapiPageIndex.nodes[0];
+  const { projectsTitle, projectsItemButton } = DATA.allStrapiPageIndex.nodes[0];
 
   const projectsList = DATA.allStrapiIndexProject.nodes;
 

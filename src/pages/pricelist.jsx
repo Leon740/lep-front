@@ -508,7 +508,14 @@ function PricelistPage() {
   `;
   const DATA = useStaticQuery(query).allStrapiPagePricelist.nodes[0];
   const {
-    pageTitle, inputPlaceholder, thead, table, notFoundImage: { alternativeText: notFoundImageAlt, url: notFoundImageUrl }, notFoundTitle, notFoundSubtitle, notFoundButtons,
+    pageTitle,
+    inputPlaceholder,
+    thead,
+    table,
+    notFoundImage: { alternativeText: notFoundImageAlt, url: notFoundImageUrl },
+    notFoundTitle,
+    notFoundSubtitle,
+    notFoundButtons
   } = DATA;
 
   // Logic
@@ -529,7 +536,9 @@ function PricelistPage() {
     }
 
     if (isSearchQuery) {
-      return table.filter((tr) => sanitizeStringFunc(tr.name).includes(sanitizeStringFunc(searchQuery)));
+      return table.filter((tr) =>
+        sanitizeStringFunc(tr.name).includes(sanitizeStringFunc(searchQuery))
+      );
     }
 
     return table;
@@ -540,7 +549,7 @@ function PricelistPage() {
 
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   }
 
@@ -558,9 +567,19 @@ function PricelistPage() {
                 </div>
 
                 <div className="search__input">
-                  <input type="text" className="input__inner" placeholder={inputPlaceholder} value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+                  <input
+                    type="text"
+                    className="input__inner"
+                    placeholder={inputPlaceholder}
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
                   {isSearchQuery && (
-                    <button type="button" className="input__reset" onClick={() => setSearchQuery('')}>
+                    <button
+                      type="button"
+                      className="input__reset"
+                      onClick={() => setSearchQuery('')}
+                    >
                       <Icon className="close" />
                     </button>
                   )}
@@ -571,7 +590,12 @@ function PricelistPage() {
         </Container>
 
         <Container fluid="lg">
-          <div className={`pricelist__results ${searchFunc().length > 0 ? 'pricelist__results_scroll' : ''}`} ref={tableRef}>
+          <div
+            className={`pricelist__results ${
+              searchFunc().length > 0 ? 'pricelist__results_scroll' : ''
+            }`}
+            ref={tableRef}
+          >
             {searchFunc().length > 0 ? (
               <div className="results__table">
                 <table className="table__inner">
@@ -589,7 +613,16 @@ function PricelistPage() {
                         <td className="table__td col">{index + 1}</td>
                         <td className="table__td table__td_name col-8">
                           {isSearchQuery ? (
-                            <span dangerouslySetInnerHTML={{ __html: sanitizeStringFunc(tr.name).replace(sanitizeStringFunc(searchQuery), `<span class='td__search'>${sanitizeStringFunc(searchQuery)}</span>`) }} />
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: sanitizeStringFunc(tr.name).replace(
+                                  sanitizeStringFunc(searchQuery),
+                                  `<span class='td__search'>${sanitizeStringFunc(
+                                    searchQuery
+                                  )}</span>`
+                                )
+                              }}
+                            />
                           ) : (
                             tr.name
                           )}
@@ -608,7 +641,12 @@ function PricelistPage() {
                 <h3 className="notfound__subtitle">{notFoundSubtitle}</h3>
                 <div className="notfound__buttons">
                   {notFoundButtons.map((button) => (
-                    <Button key={button.id} className="primary" label={button.label} onClick={() => notFoundButtonOnClick(button.label)} />
+                    <Button
+                      key={button.id}
+                      className="primary"
+                      label={button.label}
+                      onClick={() => notFoundButtonOnClick(button.label)}
+                    />
                   ))}
                 </div>
               </div>

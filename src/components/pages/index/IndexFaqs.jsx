@@ -11,7 +11,7 @@ import Accordion from 'react-bootstrap/Accordion';
 // React-Markdown
 import ReactMarkdown from 'react-markdown';
 
-// Harddata
+// HardData
 // const FAQS_DATA = [
 //   {
 //     id: 0,
@@ -67,10 +67,7 @@ function IndexFaqs() {
   `;
   const DATA = useStaticQuery(query).allStrapiPageIndex.nodes[0];
 
-  const {
-    faqsTitle,
-    faqsList,
-  } = DATA;
+  const { faqsTitle, faqsList } = DATA;
 
   // Logic
   const [activeId, setActiveId] = useState(null);
@@ -91,13 +88,29 @@ function IndexFaqs() {
         <Accordion className="faqs__accordion">
           <Row as="ul" className="justify-content-center justify-content-xxl-start">
             {faqsList.map((faqsItem, index) => {
-              const { id, title, content: { data: { content } } } = faqsItem;
+              const {
+                id,
+                title,
+                content: {
+                  data: { content }
+                }
+              } = faqsItem;
 
               return (
                 <Col as="li" key={id} xs={12} lg={10} xl={8} xxl={6}>
-                  <Accordion.Item eventKey={index} className={`accordion__item ${activeId === index ? 'accordion__item--active' : ''}`}>
+                  <Accordion.Item
+                    eventKey={index}
+                    className={`accordion__item ${
+                      activeId === index ? 'accordion__item--active' : ''
+                    }`}
+                  >
                     <div>
-                      <Accordion.Button onClick={() => accordionButtonOnClick(index)} className="accordion__button">{title}</Accordion.Button>
+                      <Accordion.Button
+                        onClick={() => accordionButtonOnClick(index)}
+                        className="accordion__button"
+                      >
+                        {title}
+                      </Accordion.Button>
                     </div>
                     <Accordion.Body className="accordion__body">
                       <ReactMarkdown>{content}</ReactMarkdown>

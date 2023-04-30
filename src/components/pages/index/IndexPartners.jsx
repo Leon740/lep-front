@@ -11,7 +11,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 // Components
 import ListItem from './ListItem';
 
-// Harddata
+// HardData
 // import partnersImg1 from '../../../assets/images/pages/index/index-partners/partners-1.svg';
 // import partnersImg2 from '../../../assets/images/pages/index/index-partners/partners-2.svg';
 // import partnersImg3 from '../../../assets/images/pages/index/index-partners/partners-3.svg';
@@ -64,12 +64,22 @@ function ArticlesItem(props) {
       <Row as="ul">
         {articleList.map((partnersItem) => {
           const {
-            id, title, paragraph, img: { alternativeText, url },
+            id,
+            title,
+            paragraph,
+            img: { alternativeText, url }
           } = partnersItem;
 
           return (
             <Col key={id} as="li" xs={12} md={6}>
-              <ListItem type="horizontal" className="partners" src={url} alt={alternativeText} title={title} paragraph={paragraph} />
+              <ListItem
+                type="horizontal"
+                className="partners"
+                src={url}
+                alt={alternativeText}
+                title={title}
+                paragraph={paragraph}
+              />
             </Col>
           );
         })}
@@ -81,7 +91,7 @@ function ArticlesItem(props) {
 ArticlesItem.propTypes = {
   articleTitle: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  articleList: PropTypes.array.isRequired,
+  articleList: PropTypes.array.isRequired
 };
 
 function IndexPartners() {
@@ -110,11 +120,7 @@ function IndexPartners() {
   `;
   const DATA = useStaticQuery(query);
 
-  const {
-    partnersTitle,
-    partnersSubtitle1,
-    partnersSubtitle2,
-  } = DATA.allStrapiPageIndex.nodes[0];
+  const { partnersTitle, partnersSubtitle1, partnersSubtitle2 } = DATA.allStrapiPageIndex.nodes[0];
 
   const partnersList = DATA.allStrapiIndexPartner.nodes;
 

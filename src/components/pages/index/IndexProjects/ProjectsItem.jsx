@@ -12,7 +12,7 @@ import Button from '../../../global/Button';
 import ProjectsItemDecorator from './ProjectsItemDecorator';
 import ProjectsItemModal from './ProjectsItemModal';
 
-// Harddata
+// HardData
 // import projectsItemDecoratorImg from '../../../../assets/images/pages/index/index-projects/projects-item-decorator.svg';
 
 // const PROJECTS_ITEM_DECORATOR = {
@@ -22,21 +22,17 @@ import ProjectsItemModal from './ProjectsItemModal';
 
 function ProjectsItem(props) {
   // Data
-  const {
-    project,
-    button,
-  } = props;
+  const { project, button } = props;
 
   const {
     name,
-    features: { data: { features } },
-    photos,
+    features: {
+      data: { features }
+    },
+    photos
   } = project;
 
-  const {
-    label: btnLabel = 'Смотреть фото',
-    icon: btnIcon = 'camera',
-  } = button;
+  const { label: btnLabel = 'Смотреть фото', icon: btnIcon = 'camera' } = button;
 
   // Logic
   const [modal, setModal] = useState(false);
@@ -62,15 +58,15 @@ ProjectsItem.propTypes = {
     name: PropTypes.string.isRequired,
     features: PropTypes.shape({
       data: PropTypes.shape({
-        features: PropTypes.string.isRequired,
-      }),
+        features: PropTypes.string.isRequired
+      })
     }),
-    photos: PropTypes.array.isRequired,
+    photos: PropTypes.array.isRequired
   }),
   button: PropTypes.shape({
     label: PropTypes.string,
-    icon: PropTypes.string,
-  }),
+    icon: PropTypes.string
+  })
 };
 
 export default ProjectsItem;
