@@ -1,5 +1,5 @@
 // React
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Data
@@ -9,6 +9,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // Components
+import Spinner from 'react-bootstrap/Spinner';
 import MainMenu from '../global/MainMenu/MainMenu';
 
 // Styles
@@ -45,12 +46,38 @@ function Main(props) {
           }
         }
       }
+      allStrapiPageNotFound {
+        nodes {
+          image {
+            alternativeText
+            url
+          }
+        }
+      }
     }
   `;
   const DATA = useStaticQuery(query).allStrapiMeta.nodes[0];
   const {
-    lang, title, description, keywords, url, image: { localFile: { url: image } },
+    lang,
+    title,
+    description,
+    keywords,
+    url,
+    image: {
+      localFile: { url: image }
+    }
   } = DATA;
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (!isMounted) {
+      setTimeout(() => {
+        setIsMounted(true);
+      }, 500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StrictMode>
@@ -70,19 +97,24 @@ function Main(props) {
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content={title} />
         </Helmet>
+        <div className={`site__body ${!isMounted ? 'site__body--loading' : ''}`}>
+          {isMounted ? (
+            <>
+              <div className="site__header_placeholder">
+                <div className="site__header_container">
+                  <MainMenu element="header" />
+                </div>
+              </div>
 
-        <div className="site__body">
-          <div className="site__header_placeholder">
-            <div className="site__header_container">
-              <MainMenu element="header" />
+              <main className={`page__${className}`}>{children}</main>
+
+              <MainMenu element="footer" />
+            </>
+          ) : (
+            <div className="site__loader">
+              <Spinner animation="border" role="status" variant="dark" />
             </div>
-          </div>
-
-          <main className={`page__${className}`}>
-            {children}
-          </main>
-
-          <MainMenu element="footer" />
+          )}
         </div>
       </HelmetProvider>
     </StrictMode>
@@ -91,7 +123,7 @@ function Main(props) {
 
 Main.propTypes = {
   className: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Main;
