@@ -2,7 +2,7 @@
 React application which uses Gatsby SSG (Static Site Generator)
 
 # Motivation
-Sharepen skills in React & SSG
+Sharpen skills in React & SSG
 
 # Stack
 * React
