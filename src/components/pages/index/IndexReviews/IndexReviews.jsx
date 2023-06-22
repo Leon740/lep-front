@@ -9,7 +9,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 // Components
 import Img from '../../../global/Img';
-import Button from '../../../global/Button';
 import ReviewsStars from './ReviewsStars';
 import ReviewsItem from './ReviewsItem';
 
@@ -65,10 +64,6 @@ function IndexReviews() {
             label
             icon
           }
-          reviewsAllButton {
-            label
-            url
-          }
         }
       }
       allStrapiIndexReview {
@@ -95,8 +90,7 @@ function IndexReviews() {
     placeTitle,
     placeRating,
     placeImg: { alternativeText: placeImgAlt, url: placeImgUrl },
-    reviewsItemButton,
-    reviewsAllButton: { label: reviewsAllBtnLabel, url: reviewsAllBtnUrl }
+    reviewsItemButton
   } = DATA.allStrapiPageIndex.nodes[0];
 
   const reviewsList = DATA.allStrapiIndexReview.nodes;
@@ -129,19 +123,6 @@ function IndexReviews() {
           </Row>
         </div>
       </Container>
-
-      {reviewsAllBtnUrl && (
-        <Container>
-          <Button
-            className="primary"
-            to={reviewsAllBtnUrl}
-            icon="arrow-right"
-            iconOrder="order-1"
-            label={reviewsAllBtnLabel}
-            labelOrder="order-0"
-          />
-        </Container>
-      )}
     </div>
   );
 }
