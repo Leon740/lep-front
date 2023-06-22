@@ -90,7 +90,7 @@ function PrimaryMenu(props) {
               active={headerIsOpened}
               onClick={headerHandler}
               icon={headerIsOpened ? 'close' : ''}
-              label="Контакты"
+              label="Контакти"
             />
           </Col>
         )}
