@@ -2,6 +2,8 @@
 
 // Modal Animation
 .modal {
+  padding: 0 !important;
+
   &.fade {
     .modal-dialog {
       transition: $transition;
